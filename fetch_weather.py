@@ -65,26 +65,62 @@ def generate_rss(daily_forecast):
     tomorrow = daily_forecast[1]
     
     # Parse data
-    date_str = tomorrow["fxDate"] 
-    text_day = tomorrow["textDay"]
-    text_night = tomorrow["textNight"]
-    temp_max = tomorrow["tempMax"]
-    temp_min = tomorrow["tempMin"]
-    humidity = tomorrow["humidity"]
-    wind_dir = tomorrow["windDirDay"]
-    wind_scale = tomorrow["windScaleDay"]
-    uv_index = tomorrow["uvIndex"]
+    date_str = tomorrow.get("fxDate", "N/A")
     
-    # Format Title and Description
+    # Astronomical
+    sunrise = tomorrow.get("sunrise", "N/A")
+    sunset = tomorrow.get("sunset", "N/A")
+    moonrise = tomorrow.get("moonrise", "N/A")
+    moonset = tomorrow.get("moonset", "N/A")
+    moon_phase = tomorrow.get("moonPhase", "N/A")
+    moon_phase_icon = tomorrow.get("moonPhaseIcon", "N/A")
+    
+    # Temperature
+    temp_max = tomorrow.get("tempMax", "N/A")
+    temp_min = tomorrow.get("tempMin", "N/A")
+    
+    # Day Condition
+    icon_day = tomorrow.get("iconDay", "N/A")
+    text_day = tomorrow.get("textDay", "N/A")
+    wind_360_day = tomorrow.get("wind360Day", "N/A")
+    wind_dir_day = tomorrow.get("windDirDay", "N/A")
+    wind_scale_day = tomorrow.get("windScaleDay", "N/A")
+    wind_speed_day = tomorrow.get("windSpeedDay", "N/A")
+    
+    # Night Condition
+    icon_night = tomorrow.get("iconNight", "N/A")
+    text_night = tomorrow.get("textNight", "N/A")
+    wind_360_night = tomorrow.get("wind360Night", "N/A")
+    wind_dir_night = tomorrow.get("windDirNight", "N/A")
+    wind_scale_night = tomorrow.get("windScaleNight", "N/A")
+    wind_speed_night = tomorrow.get("windSpeedNight", "N/A")
+    
+    # Other
+    humidity = tomorrow.get("humidity", "N/A")
+    precip = tomorrow.get("precip", "N/A")
+    pressure = tomorrow.get("pressure", "N/A")
+    vis = tomorrow.get("vis", "N/A")
+    cloud = tomorrow.get("cloud", "N/A")
+    uv_index = tomorrow.get("uvIndex", "N/A")
+    
+    # Format Title
     title = f"{date_str}: {text_day}, {temp_min}°C - {temp_max}°C"
     
+    # Format Description
     description = (
         f"<strong>Date:</strong> {date_str}<br/>"
-        f"<strong>Day:</strong> {text_day}<br/>"
-        f"<strong>Night:</strong> {text_night}<br/>"
+        f"<strong>Condition (Day):</strong> {text_day} (Icon: {icon_day})<br/>"
+        f"<strong>Condition (Night):</strong> {text_night} (Icon: {icon_night})<br/>"
         f"<strong>Temperature:</strong> {temp_min}°C to {temp_max}°C<br/>"
+        f"<strong>Sun:</strong> Rise {sunrise}, Set {sunset}<br/>"
+        f"<strong>Moon:</strong> Rise {moonrise}, Set {moonset} (Phase: {moon_phase})<br/>"
+        f"<strong>Wind (Day):</strong> {wind_dir_day} ({wind_360_day}°), Scale {wind_scale_day}, Speed {wind_speed_day} km/h<br/>"
+        f"<strong>Wind (Night):</strong> {wind_dir_night} ({wind_360_night}°), Scale {wind_scale_night}, Speed {wind_speed_night} km/h<br/>"
         f"<strong>Humidity:</strong> {humidity}%<br/>"
-        f"<strong>Wind:</strong> {wind_dir} (Scale: {wind_scale})<br/>"
+        f"<strong>Precipitation:</strong> {precip} mm<br/>"
+        f"<strong>Pressure:</strong> {pressure} hPa<br/>"
+        f"<strong>Visibility:</strong> {vis} km<br/>"
+        f"<strong>Cloud Cover:</strong> {cloud}%<br/>"
         f"<strong>UV Index:</strong> {uv_index}"
     )
 
