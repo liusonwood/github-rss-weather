@@ -11,7 +11,7 @@ Automated weather forecast for Shanghai, generated daily via GitHub Actions and 
 ## 📡 Subscribe to the Feed
 You can subscribe to this weather feed using your favorite RSS reader by using the **Raw URL** of the `weather.xml` file:
 
-`https://raw.githubusercontent.com/<YOUR_USERNAME>/<YOUR_REPO_NAME>/main/weather.xml`
+`https://raw.githubusercontent.com/liusonwood/rssqweather/main/weather.xml`
 
 ## 🛠️ Setup Instructions
 
