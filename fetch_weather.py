@@ -108,19 +108,23 @@ def generate_rss(daily_forecast):
     
     # Format Description
     description = (
-        f"<strong>Date:</strong> {date_str}<br/>"
         f"<strong>Condition (Day):</strong> {text_day} (Icon: {icon_day})<br/>"
         f"<strong>Condition (Night):</strong> {text_night} (Icon: {icon_night})<br/>"
         f"<strong>Temperature:</strong> {temp_min}°C to {temp_max}°C<br/>"
-        f"<strong>Sun:</strong> Rise {sunrise}, Set {sunset}<br/>"
-        f"<strong>Moon:</strong> Rise {moonrise}, Set {moonset} (Phase: {moon_phase})<br/>"
+        f"<strong>Precipitation:</strong> {precip} mm<br/>"
+        f"<strong>Cloud Cover:</strong> {cloud}%<br/>"
+        
+        f"<br/>"
+        
         f"<strong>Wind (Day):</strong> {wind_dir_day} ({wind_360_day}°), Scale {wind_scale_day}, Speed {wind_speed_day} km/h<br/>"
         f"<strong>Wind (Night):</strong> {wind_dir_night} ({wind_360_night}°), Scale {wind_scale_night}, Speed {wind_speed_night} km/h<br/>"
+        
+        f"<br/>"
+        
         f"<strong>Humidity:</strong> {humidity}%<br/>"
-        f"<strong>Precipitation:</strong> {precip} mm<br/>"
-        f"<strong>Pressure:</strong> {pressure} hPa<br/>"
         f"<strong>Visibility:</strong> {vis} km<br/>"
-        f"<strong>Cloud Cover:</strong> {cloud}%<br/>"
+        f"<strong>Sun:</strong> Rise {sunrise}, Set {sunset}<br/>"
+        f"<strong>Moon:</strong> Rise {moonrise}, Set {moonset} (Phase: {moon_phase})<br/>"
         f"<strong>UV Index:</strong> {uv_index}"
     )
 
